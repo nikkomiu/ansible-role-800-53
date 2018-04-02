@@ -46,6 +46,13 @@
     - CM-6(d)
     - CM-6(3)
 
+- name: Configure AIDE to Use FIPS 140-2 for Validating Hashes
+  replace:
+    dest: /etc/aide.conf
+    regexp: '^NORMAL = .*$'
+    replace: 'NROMAL = FIPSR+sha512'
+
+
 - name: Schedule AIDE - EL 7
   cron:
     name: aide

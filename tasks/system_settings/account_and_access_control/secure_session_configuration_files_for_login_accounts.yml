@@ -73,6 +73,27 @@
     - RHEL-07-021060
     - RHEL-07-020230
 
+- name: Ensure Home Directories are Created for New Users
+  replace:
+    dest: /etc/login.defs
+    regexp: '^CREATE_HOME *$'
+    replace: 'CREATE_HOME yes'
+  tags:
+    - conf-low
+    - conf-medium
+    - conf-high
+    - int-low
+    - int-medium
+    - int-high
+    - avail-low
+    - avail-medium
+    - avail-high
+    - CAT-II
+    - SA-6
+    - SA-6(b)
+    - RHEL-07-021060
+    - RHEL-07-020230
+
 - name: Ensure the Default Umask is Set Correctly in /etc/profile
   debug:
     msg: "TO-DO"

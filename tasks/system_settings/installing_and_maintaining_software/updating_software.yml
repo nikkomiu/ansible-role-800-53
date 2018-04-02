@@ -1,5 +1,5 @@
 - name: Verify and Correct File Permissions with RPM
-  shell: for FILE_PATH in $(rpm -Va | grep '^.M'); do rpm --setperms $(rpm -qf "$FILE_PATH"); done
+  shell: rpm --setperms $(rpm -qf $(rpm -Va | grep '^.M' | sed -En 's/.........  . (.*)/\1/p'))
   args:
     executable: /bin/bash
   tags:
